@@ -29,15 +29,6 @@ resource "aws_instance" "my-instance" {
 }
 
 
-resource "aws_ebs_volume" "ebs-volume-1" {
-	availability_zone = "us-east-1a"
-	size              = 8
-	type              = "gp2"
-	tags = {
-		Name = "volume data"
-	}
-}
-
 resource "aws_vpc" "main" {
 	cidr_block           = "10.0.0.0/16"
 	instance_tenancy     = "default"
