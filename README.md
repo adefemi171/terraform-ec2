@@ -3,8 +3,11 @@
 ## Folder Structure
 
  📦Terraform-ec2
+
         📦user_data
+
             ┣ 📜nginx.sh
+            
         ┣ 📜instance.tf
 
 
