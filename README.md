@@ -17,7 +17,7 @@ The *public_key* value was generated on my local PC using SSH, the image is an U
 ### Clone the repository 
 
 ```
-git clone https://github.com/
+git clone https://github.com/adefemi171/terraform-ec2.git
 ```
 
 ### Initialize the directory
