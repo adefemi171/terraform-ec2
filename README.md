@@ -11,7 +11,7 @@
         ┣ 📜instance.tf
 
 
-## About the congiguration file
+## About the configuration file
 The *public_key* value was generated on my local PC using SSH, the image is an Ubuntu image and the instance type is a *t2 Micro*
 
 
