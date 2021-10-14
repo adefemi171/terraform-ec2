@@ -1,34 +1,3 @@
-provider "aws" {
-	region                  = "us-east-1"
-}
-
-
-resource "aws_key_pair" "keypairSample" {
-	key_name   = "keypairSample"
-	public_key = "${file("keypairSample.pub")}"
-}
-
-resource "aws_instance" "my-instance" {
-	ami           = "ami-2757f631"
-	instance_type = "t2.micro"
-    # the VPC subnet
-	subnet_id = "${aws_subnet.main-1.id}"
-
-	# the security group
-	vpc_security_group_ids = ["${aws_security_group.allow-ssh.id}"]
-
-	# the public SSH key
-	key_name = "${aws_key_pair.keypairSample.key_name}"
-
-	# user data
-    user_data =  "${file("./user_data/nginx.sh")}"
-
-    tags = {
-        Name = "Nginx-Instance"
-    }
-}
-
-
 resource "aws_vpc" "main" {
 	cidr_block           = "10.0.0.0/16"
 	instance_tenancy     = "default"
@@ -37,35 +6,6 @@ resource "aws_vpc" "main" {
 	enable_classiclink   = "false"
 	tags = {
 		Name = "main"
-	}
-}
-
-resource "aws_security_group" "allow-ssh" {
-	vpc_id      = "${aws_vpc.main.id}"
-	name        = "allow-ssh"
-	description = "security group that allows ssh and all egress traffic"
-	egress {
-		from_port   = 0
-		to_port     = 0
-		protocol    = "-1"
-		cidr_blocks = ["0.0.0.0/0"]
-	}
-
-	ingress {
-		from_port   = 22
-		to_port     = 22
-		protocol    = "tcp"
-		cidr_blocks = ["0.0.0.0/0"]
-	}
-    ingress {
-        from_port = 80
-        to_port = 80
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-
-	tags = {
-		Name = "allow-ssh"
 	}
 }
 
