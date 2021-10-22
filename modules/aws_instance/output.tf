@@ -1,5 +1,5 @@
 output "KEY_NAME" {
-    value = aws_key_pair.defaulr.key_name
+    value = aws_key_pair.default.key_name
 }
 
 output "INSTANCE_ARN" {
