@@ -13,3 +13,4 @@ output "INSTANCE_PUBLIC_IP" {
 output "INSTANCE_PUBLIC_DNS" {
     value = aws_instance.default.public_dns
 }
+
