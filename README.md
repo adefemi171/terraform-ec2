@@ -1,3 +1,5 @@
+# Currently revamping/modularizing this repository
+
 # A SIMPLE TERRAFORM FILE THAT INSTALL NGINX WHILE CREATING EC2
 
 ## Folder Structure
